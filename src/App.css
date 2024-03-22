@@ -1,4 +1,22 @@
-.App {
+
+.movies-container {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow-x: auto;
+  scrollbar-width:none;
+
+}
+
+
+.movie-card img {
+  width: 200px;
+  height: auto
+}
+
+
+
+/*.App {
   text-align: center;
 }
 
@@ -36,3 +54,4 @@
     transform: rotate(360deg);
   }
 }
+*/
