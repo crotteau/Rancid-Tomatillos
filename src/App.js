@@ -1,11 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
-import movieData from './Data/movieData.js' 
+import movieData from './Data/movieData.js'
 import MovieList from './MovieList.js';
-import React, { useState } from 'react'
+import MovieDetails from './MovieDetails.js'
+import React, { useEffect, useState } from 'react'
 
 function App() {
   const [movies, setMovies] = useState(movieData);
+  const [selectedMovie, setSelectedMovie] = useState(null)
+
+ const fetchData = () => {
+    fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
+    .then(resp => resp.json())
+    .then(data => setMovies(data))
+ }
+
+ useEffect(() => {
+   fetchData()
+ }, [])
+ 
+  const selectMovie = (movieId) => {
+    const movie = movies.movies.find((movie) => movie.id === movieId);
+    setSelectedMovie(movie);
+  }
+
+  const backButton = () => setSelectedMovie(null)
 
   return (
     <main className="App">
@@ -17,9 +35,13 @@ function App() {
       </section>
       <section>
         <div>Organized Movies Carousel</div>
-        <MovieList movies={movies}/>
+        {/* <MovieList movies={movies} selectMovie = {selectMovie}/> */}
       </section>
 
+      {selectedMovie ? (
+        <MovieDetails movie={selectedMovie} onBackClick={backButton} />
+      ) : (<MovieList movies={movies} selectMovie={selectMovie} />
+      )}
     </main>
   )
 }

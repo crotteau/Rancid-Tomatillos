@@ -3,8 +3,8 @@
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  overflow-x: auto;
-  scrollbar-width:none;
+  overflow-x: scroll;
+  /* scrollbar-width:none; */
 
 }
 
@@ -13,8 +13,11 @@
   width: 200px;
   height: auto
 }
- 
 
+.movie-detail img {
+  width: 80vw;
+  height: auto
+}
 
 /*.App {
   text-align: center;
