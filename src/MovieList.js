@@ -2,17 +2,19 @@ import React from 'react'
 import MovieCard from './MovieCard'
 import './App.css'
 
-function MovieList({ movies }) {
+function MovieList({ movies, selectMovie }) {
 
     const listOfMovies = movies.movies.map(movie => {
         return (
             <MovieCard
             id={movie.id}
+            key={movie.id}
             poster={movie.poster_path}
             backdrop={movie.backdrop_path}
             title={movie.title}
             rating={movie.average_rating}
             release={movie.release_date}
+            onSelect={() => selectMovie(movie.id)}
             />
         )
     })
