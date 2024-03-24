@@ -10,9 +10,9 @@ function MovieDetails({ movie, onBackClick }) {
                 <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
                 <p>Release Date: {movie.release_date}</p>
                 <p>Overview: {movie.overview}</p>
-                <p>Genres: {movie.genres}</p>
-                <p>Budget: {movie.budget.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
-                <p>Revenue: {movie.revenue.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
+                <p>Genres: {movie.genres.join(', ')}</p>
+                <p>Budget: {'$' + movie.budget.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
+                <p>Revenue: {'$' + movie.revenue.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
                 <p>Runtime: {movie.runtime}</p>
                 <p>Tagline: {movie.tagline}</p>
             </div>

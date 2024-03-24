@@ -7,11 +7,18 @@ import React, { useEffect, useState } from 'react'
 function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
-
+  const backButton = () => setSelectedMovie(null)
+  
   const fetchData = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-      .then(resp => resp.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch all movies');
+        }
+        return response.json();
+      })
       .then(data => setMovies(data))
+      .catch(error => console.log(error))
   }
 
   useEffect(() => {
@@ -20,39 +27,44 @@ function App() {
 
   const fetchMovieDetails = (movieId) => {
     const movieDetails = fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`)
-      .then(resp => resp.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch individual movie info for movie ID:${movieId}`);
+        }
+        return response.json();
+      })
 
     Promise.all([movieDetails])
-    .then(data => {
-      setSelectedMovie(data[0].movie)
-  })
-}
+      .then(data => {
+        setSelectedMovie(data[0].movie)
+      })
+      .catch(error => console.log(error))
+  }
 
-const selectMovie = (movieId) => {
-  const movie = movies.movies.find((movie) => movie.id === movieId);
-  fetchMovieDetails(movie.id)
-}
+  const selectMovie = (movieId) => {
+    const movie = movies.movies.find((movie) => movie.id === movieId);
+    fetchMovieDetails(movie.id)
+  }
 
-const backButton = () => setSelectedMovie(null)
 
-return (
-  <main className="App">
-    <header>
-      <h1>Rancid Tomatillos</h1>
-    </header>
-    <section>
-      <div>Headliner</div>
-    </section>
-    <section>
-      <div>Organized Movies Carousel</div>
-    </section>
+  return (
+    <main className="App">
+      <header>
+        <h1>Rancid Tomatillos</h1>
+      </header>
+      <section>
+        <div>Headliner</div>
+      </section>
+      <section>
+        <div>Organized Movies Carousel</div>
+      </section>
 
-    {selectedMovie ? (
-      <MovieDetails movie={selectedMovie} onBackClick={backButton} />
-    ) : (<MovieList movies={movies} selectMovie={selectMovie} />
-    )}
-  </main>
-)
+      {selectedMovie ? (
+        <MovieDetails movie={selectedMovie} onBackClick={backButton} />
+      ) : (<MovieList movies={movies} selectMovie={selectMovie} />
+      )}
+    </main>
+  )
 }
 
 
@@ -77,6 +89,5 @@ return (
   );
 }
 */
-console.log(movieData)
 
 export default App;
