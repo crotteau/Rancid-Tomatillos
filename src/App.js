@@ -7,23 +7,46 @@ import React, { useEffect, useState } from 'react'
 function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
+  const [error, setError] = useState('')
+  const backButton = () => setSelectedMovie(null)
 
- const fetchData = () => {
+  const fetchData = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(resp => resp.json())
-    .then(data => setMovies(data))
- }
-
- useEffect(() => {
-   fetchData()
- }, [])
- 
-  const selectMovie = (movieId) => {
-    const movie = movies.movies.find((movie) => movie.id === movieId);
-    setSelectedMovie(movie);
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Failed to fetch all movies');
+        }
+        return response.json();
+      })
+      .then(data => setMovies(data))
+      .catch(error => setError(error.message))
   }
 
-  const backButton = () => setSelectedMovie(null)
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const fetchMovieDetails = (movieId) => {
+    const movieDetails = fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Failed to fetch individual movie info for movie ID:${movieId}`);
+        }
+        return response.json();
+      })
+
+    Promise.all([movieDetails])
+      .then(data => {
+        setSelectedMovie(data[0].movie)
+      })
+      .catch(error => setError(error.message))
+  }
+
+  const selectMovie = (movieId) => {
+    const movie = movies.movies.find((movie) => movie.id === movieId);
+    fetchMovieDetails(movie.id)
+  }
+
 
   return (
     <main className="App">
@@ -35,9 +58,8 @@ function App() {
       </section>
       <section>
         <div>Organized Movies Carousel</div>
-        {/* <MovieList movies={movies} selectMovie = {selectMovie}/> */}
       </section>
-
+      {error && <h2>{error}</h2>}
       {selectedMovie ? (
         <MovieDetails movie={selectedMovie} onBackClick={backButton} />
       ) : (<MovieList movies={movies} selectMovie={selectMovie} />
@@ -68,6 +90,5 @@ function App() {
   );
 }
 */
-console.log(movieData)
 
 export default App;

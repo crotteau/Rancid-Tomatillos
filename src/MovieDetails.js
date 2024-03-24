@@ -1,26 +1,41 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 function MovieDetails({ movie, onBackClick }) {
 
-        return (
-            <div className="movie-detail">
-                <button onClick={onBackClick}>Back to Movies</button>
-                <h2>{movie.title}</h2>
-                <p>Average Rating: {movie.average_rating}</p>
-                <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
-                <p>Release Date: {movie.release_date}</p>
-                <p>Overview: {movie.overview}</p>
-                <p>Genres: {movie.genres}</p>
-                <p>Budget: 630000</p>
-                <p>Revenue: 100853753</p>
-                <p>Runtime: 139</p>
-                <p>Tagline: It's a movie!</p>
-                {/* <MovieDetails movie={selectedMovie} onBackClick={backButton} /> */}
-            </div>
-        )
+    return (
+        <div className="movie-detail">
+            <button onClick={onBackClick}>Back to Movies</button>
+            <h2>{movie.title}</h2>
+            <p>Average Rating: {movie.average_rating}</p>
+            <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
+            <p>Release Date: {movie.release_date}</p>
+            <p>Overview: {movie.overview}</p>
+            <p>Genres: {movie.genres.join(', ')}</p>
+            <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+            <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+            <p>Runtime: {movie.runtime + ` minutes`}</p>
+            <p>Tagline: {movie.tagline}</p>
+        </div>
+    )
 
 }
 
+MovieDetails.propTypes = {
+    movie: PropTypes.shape({
+        title: PropTypes.string,
+        average_rating: PropTypes.number,
+        backdrop_path: PropTypes.string,
+        release_date: PropTypes.string,
+        overview: PropTypes.string,
+        genres: PropTypes.arrayOf(PropTypes.string),
+        budget: PropTypes.number,
+        revenue: PropTypes.number,
+        runtime: PropTypes.number,
+        tagline: PropTypes.string,
+    }).isRequired,
+    onBackClick: PropTypes.func.isRequired,
+};
 
 export default MovieDetails;
 
