@@ -1,3 +1,6 @@
+main {
+  background-color: rgb(50, 52, 54);
+}
 
 .movies-container {
   display: grid;
@@ -8,16 +11,61 @@
 
 }
 
-
 .movie-card img {
   width: 200px;
   height: auto
 }
 
-.movie-detail img {
-  width: 80vw;
-  height: auto
+/* <<<>>>> Movie Details <<<>>>>>>> */
+.movie-detail {
+  height: 110vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  padding-left: 1em;
+  color: white;
 }
+
+.movie-detail img {
+  width: 60vw;
+  height: auto;
+  box-shadow: 1px 1px 20px black;
+}
+
+.movie-detail-right {
+  display: flex;
+  flex-direction: column;
+  width: 40vw;
+  padding: 4em;
+}
+
+/* .movie-overview {
+  border-style: solid;
+  border-width: 10px;
+  border-radius: 15px;
+  border-color: #002387;
+  padding: 10px;
+} */
+
+.movie-detail-main {
+  display: flex;
+  justify-content: space-around;
+}
+
+.movie-runtime,
+.movie-rating,
+.movie-genres {
+  border-style: solid;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 0.75em;
+  margin: 0.5em;
+    &:hover {
+      border-color: #002387;
+    }
+}
+
+
 
 /*.App {
   text-align: center;

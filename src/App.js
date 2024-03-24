@@ -60,10 +60,12 @@ function App() {
         <div>Organized Movies Carousel</div>
       </section>
       {error && <h2>{error}</h2>}
+      <section>
       {selectedMovie ? (
         <MovieDetails movie={selectedMovie} onBackClick={backButton} />
       ) : (<MovieList movies={movies} selectMovie={selectMovie} />
       )}
+      </section>
     </main>
   )
 }

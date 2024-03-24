@@ -5,17 +5,23 @@ function MovieDetails({ movie, onBackClick }) {
 
     return (
         <div className="movie-detail">
-            <button onClick={onBackClick}>Back to Movies</button>
-            <h2>{movie.title}</h2>
-            <p>Average Rating: {movie.average_rating}</p>
-            <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
-            <p>Release Date: {movie.release_date}</p>
-            <p>Overview: {movie.overview}</p>
-            <p>Genres: {movie.genres.join(', ')}</p>
-            <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-            <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-            <p>Runtime: {movie.runtime + ` minutes`}</p>
-            <p>Tagline: {movie.tagline}</p>
+            <section class="movie-detail-left">
+                <h2>{movie.title}</h2>
+                <button onClick={onBackClick}>Back to Movies</button>
+                <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
+            </section>
+            <section class="movie-detail-right">
+                <p>Release Date: {movie.release_date}</p>
+                <p class="movie-overview">Overview: {movie.overview}</p>
+                <article class="movie-detail-main">
+                    <p class="movie-genres">{movie.genres.join(' • ')}</p>
+                    <p class="movie-runtime">{movie.runtime + ` minutes`}</p>
+                    <p class="movie-rating">Average Rating: {movie.average_rating}</p>
+                </article>
+                <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+                <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+                <p>Tagline: {movie.tagline}</p>
+            </section>
         </div>
     )
 
