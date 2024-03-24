@@ -7,8 +7,9 @@ import React, { useEffect, useState } from 'react'
 function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
+  const [error, setError] = useState('')
   const backButton = () => setSelectedMovie(null)
-  
+
   const fetchData = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
       .then(response => {
@@ -18,7 +19,7 @@ function App() {
         return response.json();
       })
       .then(data => setMovies(data))
-      .catch(error => console.log(error))
+      .catch(error => setError(error.message))
   }
 
   useEffect(() => {
@@ -38,7 +39,7 @@ function App() {
       .then(data => {
         setSelectedMovie(data[0].movie)
       })
-      .catch(error => console.log(error))
+      .catch(error => setError(error.message))
   }
 
   const selectMovie = (movieId) => {
@@ -58,7 +59,7 @@ function App() {
       <section>
         <div>Organized Movies Carousel</div>
       </section>
-
+      {error && <h2>{error}</h2>}
       {selectedMovie ? (
         <MovieDetails movie={selectedMovie} onBackClick={backButton} />
       ) : (<MovieList movies={movies} selectMovie={selectMovie} />
