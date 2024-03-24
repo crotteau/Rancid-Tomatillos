@@ -8,42 +8,51 @@ function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
 
- const fetchData = () => {
+  const fetchData = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
-    .then(resp => resp.json())
-    .then(data => setMovies(data))
- }
-
- useEffect(() => {
-   fetchData()
- }, [])
- 
-  const selectMovie = (movieId) => {
-    const movie = movies.movies.find((movie) => movie.id === movieId);
-    setSelectedMovie(movie);
+      .then(resp => resp.json())
+      .then(data => setMovies(data))
   }
 
-  const backButton = () => setSelectedMovie(null)
+  useEffect(() => {
+    fetchData()
+  }, [])
 
-  return (
-    <main className="App">
-      <header>
-        <h1>Rancid Tomatillos</h1>
-      </header>
-      <section>
-        <div>Headliner</div>
-      </section>
-      <section>
-        <div>Organized Movies Carousel</div>
-        {/* <MovieList movies={movies} selectMovie = {selectMovie}/> */}
-      </section>
+  const fetchMovieDetails = (movieId) => {
+    const movieDetails = fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`)
+      .then(resp => resp.json())
 
-      {selectedMovie ? (
-        <MovieDetails movie={selectedMovie} onBackClick={backButton} />
-      ) : (<MovieList movies={movies} selectMovie={selectMovie} />
-      )}
-    </main>
-  )
+    Promise.all([movieDetails])
+    .then(data => {
+      setSelectedMovie(data[0].movie)
+  })
+}
+
+const selectMovie = (movieId) => {
+  const movie = movies.movies.find((movie) => movie.id === movieId);
+  fetchMovieDetails(movie.id)
+}
+
+const backButton = () => setSelectedMovie(null)
+
+return (
+  <main className="App">
+    <header>
+      <h1>Rancid Tomatillos</h1>
+    </header>
+    <section>
+      <div>Headliner</div>
+    </section>
+    <section>
+      <div>Organized Movies Carousel</div>
+    </section>
+
+    {selectedMovie ? (
+      <MovieDetails movie={selectedMovie} onBackClick={backButton} />
+    ) : (<MovieList movies={movies} selectMovie={selectMovie} />
+    )}
+  </main>
+)
 }
 
 

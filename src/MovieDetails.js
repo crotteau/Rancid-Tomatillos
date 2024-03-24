@@ -11,11 +11,10 @@ function MovieDetails({ movie, onBackClick }) {
                 <p>Release Date: {movie.release_date}</p>
                 <p>Overview: {movie.overview}</p>
                 <p>Genres: {movie.genres}</p>
-                <p>Budget: 630000</p>
-                <p>Revenue: 100853753</p>
-                <p>Runtime: 139</p>
-                <p>Tagline: It's a movie!</p>
-                {/* <MovieDetails movie={selectedMovie} onBackClick={backButton} /> */}
+                <p>Budget: {movie.budget.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
+                <p>Revenue: {movie.revenue.toLocaleString("en-us", {type: "currency", currency: "USD"})}</p>
+                <p>Runtime: {movie.runtime}</p>
+                <p>Tagline: {movie.tagline}</p>
             </div>
         )
 
