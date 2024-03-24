@@ -5,23 +5,25 @@ function MovieDetails({ movie, onBackClick }) {
 
     return (
         <div className="movie-detail">
-            <section class="movie-detail-left">
-                <h2>{movie.title}</h2>
-                <button onClick={onBackClick}>Back to Movies</button>
-                <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
-            </section>
-            <section class="movie-detail-right">
-                <p>Release Date: {movie.release_date}</p>
-                <p class="movie-overview">Overview: {movie.overview}</p>
-                <article class="movie-detail-main">
-                    <p class="movie-genres">{movie.genres.join(' • ')}</p>
-                    <p class="movie-runtime">{movie.runtime + ` minutes`}</p>
-                    <p class="movie-rating">Average Rating: {movie.average_rating}</p>
-                </article>
-                <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-                <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-                <p>Tagline: {movie.tagline}</p>
-            </section>
+            <h2>{movie.title}</h2>
+            <p>{movie.tagline}</p>
+            <div class="movie-detail-main">
+                <section class="movie-detail-left">
+                    <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
+                    <article class="movie-detail-boxes">
+                        <p class="movie-genres">{movie.genres.join(' • ')}</p>
+                        <p class="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
+                        <p class="movie-runtime">{movie.runtime + ' minutes'}</p>
+                    </article>
+                </section>
+                <section class="movie-detail-right">
+                    <p class="movie-overview">Overview: {movie.overview}</p>
+                    <p>Release Date: {movie.release_date}</p>
+                    <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+                    <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
+                    <button class="return-home" onClick={onBackClick}>Back to Movies</button>
+                </section>
+            </div>
         </div>
     )
 
