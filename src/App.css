@@ -19,31 +19,65 @@ main {
 /* <<<>>>> Movie Details <<<>>>>>>> */
 .movie-detail {
   height: 110vh;
-  padding-left: 1em;
   color: white;
   font-size: larger;
+  padding-top: 1vh;
+  background-color: rgb(26, 26, 28);
+}
+
+
+.movie-tagline,
+.movie-detail-boxes {
+  margin-left: 2.5vw;
+}
+
+.movie-tagline {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  background-color: black;
+  padding: 0.5em;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.movie-title {
+  margin-left: 2.5vw;
+  margin-bottom: 0.25em;
+  padding: 0.5em;
+  font-size: 2em;
+  border-radius: 8px;
+  background-color: black;
+  width: fit-content;
 }
 
 .movie-detail-main {
   display: flex;
   flex-direction: row;
+  background-size: cover;
 }
 
 .movie-detail img {
+  margin-top: 1.5em;
+  margin-left: 1em;
   width: 55vw;
   height: auto;
   box-shadow: 1px 1px 20px black;
 }
 
+.movie-detail-left {
+  background-color: rgba(14, 13, 13, 0.908);
+  height: inherit;
+}
+
 .movie-detail-right {
-  height: fit-content;
+  height: 55vh;
   display: flex;
   flex-direction: column;
   width: 40vw;
   padding: 4em;
-  margin: 0em 1em;
-  background-color: rgb(6, 6, 6);
-  box-shadow: 1px 1px 10px black;
+  background-color: rgba(14, 13, 13, 0.908);
+  /* box-shadow: 1px 1px 10px black; */
 }
 
 
@@ -55,27 +89,33 @@ main {
 .movie-runtime,
 .movie-rating,
 .movie-genres {
-  box-shadow: 1px 1px 10px rgb(92, 91, 91);
-  border-radius: 15px;
+  border-style: solid;
+  border-color: #222223;
+  border-radius: 8px;
   width: fit-content;
   padding: 0.75em;
   margin: 0.5em;
   margin-top: 1em;
-  background: rgb(26, 25, 25);
+  /* background: rgb(26, 25, 25); */
+  background: black;
     &:hover {
-      border-style: solid;
       border-color: #002387;
     }
 }
 
 .return-home {
+  border-style: solid;
+  border-color: #002387;
   margin-top: 2em;
   width: 15em;
   height: 2em;
   font-size: large;
+  font-weight: bold;
   border-radius: 5px;
   &:hover {
     background-color: #002387;
+    border-style: solid;
+    border-color: #002387;
     color: white;
     cursor: pointer;
   }

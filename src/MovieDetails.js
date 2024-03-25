@@ -2,26 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 function MovieDetails({ movie, onBackClick }) {
+    // style={{backgroundImage: `url(${movie.backdrop_path})`}}
+    function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        const date = new Date(dateString);
+        return date.toLocaleDateString('en-US', options);
+    }
 
     return (
-        <div className="movie-detail">
-            <h2>{movie.title}</h2>
-            <p>{movie.tagline}</p>
-            <div class="movie-detail-main">
-                <section class="movie-detail-left">
+        <div className="movie-detail" >
+            <h2 className="movie-title">{movie.title}</h2>
+            <p className="movie-tagline">{movie.tagline}</p>
+            <div className="movie-detail-main" style={{backgroundImage: `url(${movie.backdrop_path})`}}>
+                <section className="movie-detail-left">
                     <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
-                    <article class="movie-detail-boxes">
-                        <p class="movie-genres">{movie.genres.join(' • ')}</p>
-                        <p class="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
-                        <p class="movie-runtime">{movie.runtime + ' minutes'}</p>
+                    <article className="movie-detail-boxes">
+                        <p className="movie-genres">{movie.genres.join(' • ')}</p>
+                        <p className="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
+                        <p className="movie-runtime">{movie.runtime + ' minutes'}</p>
                     </article>
                 </section>
-                <section class="movie-detail-right">
-                    <p class="movie-overview">Overview: {movie.overview}</p>
-                    <p>Release Date: {movie.release_date}</p>
+                <section className="movie-detail-right">
+                    <p className="movie-overview">Overview: {movie.overview}</p>
+                    <p>Release Date: {formatDate(movie.release_date)}</p>
                     <p>Budget: {movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
                     <p>Revenue: {movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-                    <button class="return-home" onClick={onBackClick}>Back to Movies</button>
+                    <button className="return-home" onClick={onBackClick}>Back to Movies</button>
                 </section>
             </div>
         </div>
