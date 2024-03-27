@@ -14,21 +14,3 @@ describe('Movie Details UI', () => {
 
 })
 
-
-
-
-// cy.contains("Feedback Loop")
-// .get("form").contains("h2", "Please Sign In")
-// .get("input[name='email']").type("leta@turing.io")
-// .get("input[name='password']").type("keane20")
-// .get('button').click()
-// .url().should("include", "/dashboard")
-
-// {
-//   "id": 724495,
-//   "poster_path": "https://image.tmdb.org/t/p/original//438QXt1E3WJWb3PqNniK0tAE5c1.jpg",
-//   "backdrop_path": "https://image.tmdb.org/t/p/original//7zQJYV02yehWrQN6NjKsBorqUUS.jpg",
-//   "title": "The Woman King",
-//   "average_rating": 7,
-//   "release_date": "2022-09-15"
-// }
