@@ -2,12 +2,14 @@ import './App.css';
 import movieData from './Data/movieData.js'
 import MovieList from './MovieList.js';
 import MovieDetails from './MovieDetails.js'
+import useScrollTrack from './useScrollTrack.js';
 import React, { useEffect, useState } from 'react'
 
 function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [error, setError] = useState('')
+  const { trackRef } = useScrollTrack()
   const backButton = () => setSelectedMovie(null)
 
   const fetchData = () => {
@@ -26,6 +28,7 @@ function App() {
     fetchData()
   }, [])
 
+  
   const fetchMovieDetails = (movieId) => {
     const movieDetails = fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`)
       .then(response => {
@@ -63,12 +66,14 @@ function App() {
       <section>
       {selectedMovie ? (
         <MovieDetails movie={selectedMovie} onBackClick={backButton} />
-      ) : (<MovieList movies={movies} selectMovie={selectMovie} />
+      ) : (<MovieList movies={movies} selectMovie={selectMovie} trackRef={trackRef}/>
       )}
       </section>
     </main>
   )
 }
+
+export default App;
 
 
 /*function App() {
@@ -93,4 +98,4 @@ function App() {
 }
 */
 
-export default App;
+
