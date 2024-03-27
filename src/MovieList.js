@@ -3,7 +3,9 @@ import MovieCard from './MovieCard'
 import PropTypes from 'prop-types'
 import './App.css'
 
-function MovieList({ movies, selectMovie }) {
+function MovieList({ movies, selectMovie, trackRef }) {
+    console.log(movies)
+
     const listOfMovies = movies.movies.map(movie => {
         return (
             <MovieCard
@@ -20,7 +22,7 @@ function MovieList({ movies, selectMovie }) {
     })
 
     return (
-        <div className='movies-container'>
+        <div className='movies-container' ref={trackRef}>
             {listOfMovies}
         </div>
     )
@@ -35,7 +37,8 @@ MovieList.propTypes = {
         average_rating: PropTypes.number,
         release_date: PropTypes.string
     }).isRequired,
-    selectMovie: PropTypes.func.isRequired
+    selectMovie: PropTypes.func.isRequired,
+    trackRef: PropTypes.object,
 
 }
 
