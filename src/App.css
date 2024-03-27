@@ -1,3 +1,6 @@
+main {
+  background-color: rgb(26, 26, 28);
+}
 
 body {
   height: 100vh;
@@ -72,55 +75,121 @@ body {
   overflow-x: scroll;
   /* scrollbar-width:none; 
 
-}
 
+}
 
 .movie-card img {
   width: 200px;
   height: auto
 }
 
+/* <<<>>>> Movie Details <<<>>>>>>> */
+.movie-detail {
+  height: 110vh;
+  color: white;
+  font-size: larger;
+  padding-top: 1vh;
+  background-color: rgb(26, 26, 28);
+}
+
+.movie-tagline,
+.movie-detail-boxes {
+  margin-left: 2.5vw;
+}
+
+.movie-tagline {
+  font-size: 1.25em;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  background-color: black;
+  padding: 0.5em;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.movie-title {
+  margin-left: 2.5vw;
+  margin-bottom: 0.25em;
+  padding: 0.5em;
+  font-size: 2em;
+  border-radius: 8px;
+  background-color: black;
+  width: fit-content;
+}
+
+.movie-detail-main {
+  display: flex;
+  flex-direction: row;
+  background-size: cover;
+}
+
 .movie-detail img {
-  width: 80vw;
-  height: auto
+  margin-top: 1.5em;
+  margin-left: 1em;
+  width: 55vw;
+  height: auto;
+  box-shadow: 1px 1px 20px black;
 }
 
-.App {
-  text-align: center;
+.movie-detail-left {
+  background-color: rgba(14, 13, 13, 0.908);
+  height: inherit;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.movie-detail-right {
+  height: inherit;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 40vw;
+  padding: 4em;
+  background-color: rgba(14, 13, 13, 0.908);
 }
 
-.App-link {
-  color: #61dafb;
+.movie-detail-boxes {
+  display: flex;
+  justify-content: left;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+.movie-runtime,
+.movie-rating,
+.movie-genres {
+  border-style: solid;
+  border-color: #222223;
+  border-radius: 8px;
+  width: fit-content;
+  padding: 0.75em;
+  margin: 0.5em;
+  margin-top: 1em;
+  background: black;
+
+  &:hover {
+    border-color: #f9fbf9;
   }
 }
-*/
+
+.movie-overview {
+  text-align: justify;
+}
+
+span {
+  font-size: larger;
+  font-weight: bold;
+  color: #3b66de;
+}
+
+.return-home {
+  border-style: solid;
+  border-color: #002387;
+  margin-top: 2em;
+  width: 15em;
+  height: 2em;
+  font-size: large;
+  font-weight: bold;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #002387;
+    color: white;
+    cursor: pointer;
+  }
+}
