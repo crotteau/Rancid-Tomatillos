@@ -12,7 +12,7 @@ function MovieDetails({ movie, onBackClick }) {
     return (
         <div className="movie-detail" >
             <h2 className="movie-title">{movie.title}</h2>
-            <p className="movie-tagline">{movie.tagline}</p>
+            <h3 className="movie-tagline">{movie.tagline}</h3>
             <div className="movie-detail-main" style={{backgroundImage: `url(${movie.backdrop_path})`}}>
                 <section className="movie-detail-left">
                     <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
