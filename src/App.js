@@ -2,15 +2,18 @@ import './App.css';
 import movieData from './Data/movieData.js'
 import MovieList from './MovieList.js';
 import MovieDetails from './MovieDetails.js'
-import useScrollTrack from './useScrollTrack.js';
+//import useScrollTrack from './useScrollTrack.js';
 import React, { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
 
 function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [error, setError] = useState('')
-  const { trackRef } = useScrollTrack()
+  //const { trackRef } = useScrollTrack()
   const backButton = () => setSelectedMovie(null)
+ 
+
 
   const fetchData = () => {
     fetch('https://rancid-tomatillos.herokuapp.com/api/v2/movies')
@@ -63,15 +66,14 @@ function App() {
         <div>Organized Movies Carousel</div>
       </section>
       {error && <h2>{error}</h2>}
-      <section>
-      {selectedMovie ? (
-        <MovieDetails movie={selectedMovie} onBackClick={backButton} />
-      ) : (<MovieList movies={movies} selectMovie={selectMovie} trackRef={trackRef}/>
-      )}
-      </section>
-    </main>
-  )
-}
+    
+      <Routes>  
+        <Route path="/" element={<MovieList movies={movies} selectMovie={selectMovie} />} />
+        <Route path="/movie/:movieId" element={<MovieDetails movie={selectedMovie} onBackClick={backButton} />} />
+      </Routes>  
+    </main>  
+  );
+};
 
 export default App;
 
@@ -97,5 +99,3 @@ export default App;
   );
 }
 */
-
-

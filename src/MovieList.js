@@ -2,9 +2,19 @@ import React from 'react'
 import MovieCard from './MovieCard'
 import PropTypes from 'prop-types'
 import './App.css'
+import { useNavigate } from 'react-router-dom'
 
-function MovieList({ movies, selectMovie, trackRef }) {
+
+// const selectMovie = navigate(`/movie/${movies.movies.id}`)
+
+function MovieList({ movies }) {
     console.log(movies)
+
+    const navigate = useNavigate();
+
+    const selectedMovie = (movieId) => {
+        navigate(`/movie/${movieId}`);
+    }
 
     const listOfMovies = movies.movies.map(movie => {
         return (
@@ -16,13 +26,13 @@ function MovieList({ movies, selectMovie, trackRef }) {
                 title={movie.title}
                 rating={movie.average_rating}
                 release={movie.release_date}
-                onSelect={() => selectMovie(movie.id)}
+                onSelect={() => selectedMovie(movie.id)}
             />
         )
     })
 
     return (
-        <div className='movies-container' ref={trackRef}>
+        <div className='movies-container' /*ref={trackRef}*/>
             {listOfMovies}
         </div>
     )
