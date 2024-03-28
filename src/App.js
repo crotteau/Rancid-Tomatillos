@@ -10,9 +10,12 @@ function App() {
   const [movies, setMovies] = useState(movieData);
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [error, setError] = useState('')
+  const [loading, setLoading] = useState(true)
   //const { trackRef } = useScrollTrack()
-  const backButton = () => setSelectedMovie(null)
- 
+  const backButton = () => { 
+    setSelectedMovie(null)
+    setLoading(true)
+  }
 
 
   const fetchData = () => {
@@ -31,11 +34,12 @@ function App() {
     fetchData()
   }, [])
 
-  
+
   const fetchMovieDetails = (movieId) => {
     const movieDetails = fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}`)
       .then(response => {
         if (!response.ok) {
+          setLoading(false)
           throw new Error(`Failed to fetch individual movie info for movie ID:${movieId}`);
         }
         return response.json();
@@ -43,10 +47,12 @@ function App() {
 
     Promise.all([movieDetails])
       .then(data => {
+        setLoading(false)
         setSelectedMovie(data[0].movie)
       })
       .catch(error => setError(error.message))
   }
+
 
   const selectMovie = (movieId) => {
     const movie = movies.movies.find((movie) => movie.id === movieId);
@@ -66,12 +72,12 @@ function App() {
         <div>Organized Movies Carousel</div>
       </section>
       {error && <h2>{error}</h2>}
-    
-      <Routes>  
+
+      <Routes>
         <Route path="/" element={<MovieList movies={movies} selectMovie={selectMovie} />} />
-        <Route path="/movie/:movieId" element={<MovieDetails movie={selectedMovie} onBackClick={backButton} />} />
-      </Routes>  
-    </main>  
+        <Route path="/movie/:movieId" element={<MovieDetails movie={selectedMovie} onBackClick={backButton} loading={loading} />} />
+      </Routes>
+    </main>
   );
 };
 

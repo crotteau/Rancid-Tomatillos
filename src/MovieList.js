@@ -5,14 +5,13 @@ import './App.css'
 import { useNavigate } from 'react-router-dom'
 
 
-// const selectMovie = navigate(`/movie/${movies.movies.id}`)
-
-function MovieList({ movies }) {
+function MovieList({ movies, selectMovie}) {
     console.log(movies)
 
     const navigate = useNavigate();
 
     const selectedMovie = (movieId) => {
+        selectMovie(movieId)
         navigate(`/movie/${movieId}`);
     }
 
