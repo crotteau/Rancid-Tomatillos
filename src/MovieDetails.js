@@ -1,7 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useParams } from 'react-router-dom'
 
 function MovieDetails({ movie, onBackClick }) {
+    console.log('8757843658567836', movie)
+
+    let { movieId } = useParams()
+
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
