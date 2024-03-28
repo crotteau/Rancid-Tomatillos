@@ -1,16 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useParams } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
-function MovieDetails({ movie, onBackClick }) {
-    console.log('8757843658567836', movie)
-
-    let { movieId } = useParams()
+function MovieDetails({ movie, onBackClick, loading }) {
 
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', options);
+    }
+
+
+    if (loading) {
+        return <p>Loading...</p>
     }
 
     return (
@@ -31,7 +33,9 @@ function MovieDetails({ movie, onBackClick }) {
                     <p><span>Release Date </span>{formatDate(movie.release_date)}</p>
                     <p><span>Budget </span>{movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
                     <p><span>Revenue </span>{movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-                    <button className="return-home" onClick={onBackClick}>Back to Movies</button>
+                    <NavLink to="/">
+                        <button className="return-home" onClick={onBackClick}>Back to Movies</button>
+                    </NavLink>
                 </section>
             </div>
         </div>
