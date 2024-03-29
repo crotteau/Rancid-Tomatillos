@@ -2,13 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
-function MovieDetails({ movie, onBackClick, loading }) {
-    function formatDate(dateString) {
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', options);
-    }
-
+function MovieDetails({ movie, onBackClick, loading, formatDate }) {
 
     if (loading) {
         return <p className="loading">Loading...</p>

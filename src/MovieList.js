@@ -6,7 +6,7 @@ import './App.css'
 import { useNavigate } from 'react-router-dom'
 
 
-function MovieList({ movies, selectMovie, randomMovie }) {
+function MovieList({ movies, selectMovie, randomMovie, formatDate }) {
     console.log(movies)
 
     const navigate = useNavigate();
@@ -48,8 +48,8 @@ function MovieList({ movies, selectMovie, randomMovie }) {
         )
     })
 
-    const headlinerMovie = 
-            <Headliner
+    const headlinerMovie =
+        <Headliner
             id={randomMovie.id}
             key={randomMovie.id}
             poster={randomMovie.poster_path}
@@ -58,17 +58,19 @@ function MovieList({ movies, selectMovie, randomMovie }) {
             rating={randomMovie.average_rating}
             release={randomMovie.release_date}
             onSelect={() => selectedMovie(randomMovie.id)}
+            formatDate={formatDate}
         />
+
     return (
         <div className='movies-container' /*ref={trackRef}*/>
             <section className="headliner" style={{ backgroundImage: `url(${randomMovie.backdrop_path})` }}>
-                {headlinerMovie}
+            {headlinerMovie}
             </section>
-            <h3>All Movies</h3>
+            <h3 className='container-header'>All Movies</h3>
             <section className='all-movies'>
                 {listOfMovies}
             </section>
-            <h3>Top Rated</h3>
+            <h3 className='container-header'>Top Rated</h3>
             <section className='top-rated'>
                 {topRatedMovies}
             </section>
