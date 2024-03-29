@@ -1,57 +1,72 @@
-main {
+/* main {
   background-color: rgb(26, 26, 28);
-}
+} */
 
 body {
   height: 100vh;
   width: 100vw;
-  background-color: black; 
+  background-color: rgb(17, 16, 16);
   margin: 0;
-  /*overflow: hidden;*/
-  color: #002387;
+  color: white;
+  /* overflow: hidden; */
+}
+
+h1 {
+  padding: 0.5em;
+}
+
+.all-movies,
+.top-rated {
+  width: 100vw;
+  display: flex;
+  gap: 4vmin;
+  /* position: absolute; changed from codepen's absolute to relative for React compatibility */
+  /* transform: translate(0%, 0%); */
+  overflow-x: scroll;
+  scrollbar-color: #4a4949 #080808
+    /*scrollbar-width: none; /* hide scrollbar for browsers that support it */
+    /*-ms-overflow-style: none;  /* needed for IE and Edge apparently */
+    /*user-select: none; /* prevents image highlighting */
 }
 
 .movies-container {
   display: flex;
-  gap: 4vmin;
-  position: absolute; /* changed from codepen's absolute to relative for React compatibility */
-  transform: translate(0%, 0%);
-  overflow-x: scroll;
-  /*scrollbar-width: none; /* hide scrollbar for browsers that support it */
-  /*-ms-overflow-style: none;  /* needed for IE and Edge apparently */
-  /*user-select: none; /* prevents image highlighting */
+  flex-direction: column;
 }
 
 /*.movies-container::-webkit-scrollbar {
   display: none; /* Hide scrollbar for Chrome, Safari, and Opera 
 } */
 
-.movie-card img, .movies-container .image {
+.movie-card img,
+.movies-container .image {
   width: 40vmin;
   height: 56vmin;
   object-fit: cover;
   object-position: 100% center;
 }
 
-.movie-detail img {
+/* .movie-detail img {
   width: 80vw;
   height: auto;
-}
+} */
 
-.meta-link, .movie-card, .movie-detail {
-  backdrop-filter: blur(3px);
+.meta-link,
+.movie-card {
+  /* backdrop-filter: blur(3px); */
   background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid #002387;
-  color: white; 
   transition: background-color 400ms, border-color 400ms;
-} 
+}
 
-.meta-link:hover, .movie-card:hover {
+.meta-link:hover,
+.movie-card:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: #002387;
-} 
+  cursor: pointer;
+}
 
-.movie-card, .movie-detail {
+.movie-card {
   margin: 1rem;
   padding: 1rem;
   border-radius: 6px;
@@ -81,7 +96,34 @@ body {
 .movie-card img {
   width: 200px;
   height: auto
+}*/
+
+.error {
+  background-color: rgb(29, 28, 28);
+  box-shadow: 1px 1px 20px rgb(234, 40, 40);
+  width: fit-content;
+  max-width: 70vw;
+  margin-left: 5vw;
+  padding: 1em;
 }
+
+/* <<<>>>> Headliner <<<>>>>>>> */
+
+.headliner {
+  background-size: contain;
+  align-self: center;
+  width: 80vw;
+  height: 25vh;
+
+  &:hover {
+    cursor: pointer;
+    border-style: solid;
+    border-color: #002387;
+    border-width: 3px;
+  }
+
+}
+
 
 /* <<<>>>> Movie Details <<<>>>>>>> */
 .movie-detail {

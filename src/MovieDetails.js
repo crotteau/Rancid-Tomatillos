@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
 function MovieDetails({ movie, onBackClick, loading }) {
-    console.log("movie details", movie)
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
