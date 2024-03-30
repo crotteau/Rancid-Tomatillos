@@ -2,17 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
 
-function MovieDetails({ movie, onBackClick, loading }) {
-
-    function formatDate(dateString) {
-        const options = { year: 'numeric', month: 'short', day: 'numeric' };
-        const date = new Date(dateString);
-        return date.toLocaleDateString('en-US', options);
-    }
-
+function MovieDetails({ movie, onBackClick, loading, formatDate }) {
 
     if (loading) {
-        return <p>Loading...</p>
+        return <p className="loading">Loading...</p>
     }
 
     return (
@@ -24,7 +17,7 @@ function MovieDetails({ movie, onBackClick, loading }) {
                     <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
                     <article className="movie-detail-boxes">
                         <p className="movie-genres">{movie.genres.join(' • ')}</p>
-                        <p className="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
+                        <p className="movie-rating">Avg Rating: {movie.average_rating < 5 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
                         <p className="movie-runtime">{movie.runtime + ' minutes'}</p>
                     </article>
                 </section>
