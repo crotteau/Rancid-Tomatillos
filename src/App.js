@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import tomatillo from './assets/tomatillo.png'
 import movieData from './Data/movieData.js'
 import MovieList from './MovieList.js'
@@ -86,5 +86,3 @@ function App() {
 };
 
 export default App;
-
-

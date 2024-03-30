@@ -2,7 +2,7 @@ import React from 'react'
 import MovieCard from './MovieCard'
 import PropTypes from 'prop-types'
 import Headliner from './Headliner'
-import './App.css'
+import './App.scss'
 import { useNavigate } from 'react-router-dom'
 
 
