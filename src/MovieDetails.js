@@ -44,6 +44,7 @@ function MovieDetails({ onBackClick, movie, loading }) {
     
     if (loading) {
         return <p>Loading...</p>;
+
     }
     return (
         <div className="movie-detail" >
@@ -54,7 +55,7 @@ function MovieDetails({ onBackClick, movie, loading }) {
                     <img src={movie.backdrop_path} alt={`${movie.title} backdrop`}></img>
                     <article className="movie-detail-boxes">
                         <p className="movie-genres">{movie.genres.join(' • ')}</p>
-                        <p className="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
+                        <p className="movie-rating">Avg Rating: {movie.average_rating < 5 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
                         <p className="movie-runtime">{movie.runtime + ' minutes'}</p>
                     </article>
                     {videoKey && (
