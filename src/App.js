@@ -1,9 +1,8 @@
-import './App.css';
+import './App.scss';
 import tomatillo from './assets/tomatillo.png'
 import movieData from './Data/movieData.js'
 import MovieList from './MovieList.js';
 import MovieDetails from './MovieDetails.js'
-//import useScrollTrack from './useScrollTrack.js';
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
@@ -12,7 +11,6 @@ function App() {
   const [selectedMovie, setSelectedMovie] = useState(null)
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(true)
-  //const { trackRef } = useScrollTrack()
   const backButton = () => {
     setSelectedMovie(null)
     setLoading(true)
@@ -88,27 +86,3 @@ function App() {
 };
 
 export default App;
-
-
-/*function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-*/
-

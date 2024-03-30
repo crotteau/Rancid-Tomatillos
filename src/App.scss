@@ -1,6 +1,4 @@
-/* main {
-  background-color: rgb(26, 26, 28);
-} */
+$tomatilloGreen: #438329;
 
 body {
   height: 100vh;
@@ -8,14 +6,11 @@ body {
   background-color: rgb(12, 12, 12);
   margin: 0;
   color: white;
-  /* overflow: hidden; */
 }
 
 header {
   display: flex;
   height: 10vh;
-  /* background-color: rgb(37, 35, 35); */
-  /* width: fit-content; */
   margin: 0.5em;
 }
 
@@ -40,13 +35,8 @@ h1 {
   width: 100vw;
   display: flex;
   gap: 4vmin;
-  /* position: absolute; changed from codepen's absolute to relative for React compatibility */
-  /* transform: translate(0%, 0%); */
   overflow-x: scroll;
   scrollbar-color: #4a4949 #080808
-    /*scrollbar-width: none; /* hide scrollbar for browsers that support it */
-    /*-ms-overflow-style: none;  /* needed for IE and Edge apparently */
-    /*user-select: none; /* prevents image highlighting */
 }
 
 .movies-container {
@@ -61,10 +51,6 @@ h1 {
   margin-bottom: 0em;
 }
 
-/*.movies-container::-webkit-scrollbar {
-  display: none; /* Hide scrollbar for Chrome, Safari, and Opera 
-} */
-
 .movie-card {
   height: fit-content;
 }
@@ -77,14 +63,9 @@ h1 {
   object-position: 100% center;
 }
 
-/* .movie-detail img {
-  width: 80vw;
-  height: auto;
-} */
 
 .meta-link,
 .movie-card {
-  /* backdrop-filter: blur(3px); */
   background-color: rgba(0, 0, 0, 0.8);
   transition: background-color 400ms;
 }
@@ -92,7 +73,7 @@ h1 {
 .meta-link:hover,
 .movie-card:hover {
   background-color: rgba(255, 255, 255, 0.1);
-  border: 2px solid #002387;
+  border: 2px solid $tomatilloGreen; 
   cursor: pointer;
 }
 
@@ -101,32 +82,6 @@ h1 {
   padding: 1rem;
   border-radius: 6px;
 }
-
-/*.meta-link, .movie-card, .movie-detail span {
-  color: #002487e5;
-} */
-
-/* invisible scrollbar 
-::-webkit-scrollbar {
-  width: 0px;
-  background: transparent;
-} */
-
-/*
-.movies-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  overflow-x: scroll;
-  /* scrollbar-width:none; 
-
-
-}
-
-.movie-card img {
-  width: 200px;
-  height: auto
-}*/
 
 .error {
   background-color: rgb(29, 28, 28);
@@ -137,7 +92,6 @@ h1 {
   padding: 1em;
 }
 
-/* <<<>>>> Headliner <<<>>>>>>> */
 .headliner {
   background-size: cover;
   box-shadow: inset 0px -10px 20px 20px rgb(15 15 15);
@@ -180,8 +134,8 @@ h1 {
 nav {
   display: flex;
   justify-content: end;
-  margin-right: 2em;
-  margin-top: 4.5em;
+  margin-right: 0.5em;
+  margin-top: 0.5em;
 }
 
 .headliner-button {
@@ -194,13 +148,15 @@ nav {
   border-radius: 5px;
   border-style: groove;
   margin-bottom: 1.5em;
+  border: solid $tomatilloGreen; 
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
     &:hover {
       color: black;
-      background-color: whitesmoke;
+      background-color: $tomatilloGreen;
+      border-color: #00ff95;
     }
 }
 
-/* <<<>>>> Movie Details <<<>>>>>>> */
 .movie-detail {
   height: 110vh;
   color: white;
@@ -222,6 +178,7 @@ nav {
   padding: 0.5em;
   border-radius: 8px;
   width: fit-content;
+  border: 2px solid $tomatilloGreen; 
 }
 
 .movie-title {
@@ -232,6 +189,7 @@ nav {
   border-radius: 8px;
   background-color: black;
   width: fit-content;
+  border: 2px solid $tomatilloGreen; 
 }
 
 .movie-detail-main {
@@ -266,10 +224,10 @@ nav {
 
 .video-container {
   order: 3;
-} /* 4 */
+}
 
 .video-container iframe {
-  border: 5px solid;
+  border: 5px solid $tomatilloGreen;
   border-radius: 8px;
   padding: 0.75em;
   margin: 0.5em;
@@ -286,8 +244,7 @@ nav {
 .movie-runtime,
 .movie-rating,
 .movie-genres {
-  border-style: solid;
-  border-color: #222223;
+  border: 2px solid $tomatilloGreen; 
   border-radius: 8px;
   width: fit-content;
   padding: 0.75em;
@@ -307,86 +264,30 @@ span {
 }
 
 .return-home {
+  display: inline-block;
   position: relative;
-  border: 1px solid #000;
-  margin-top: 2em;
   width: 15em;
   height: 2em;
+  line-height: 2em;
+  margin-top: 2em;
+  padding: 0;
+  border: 2px solid $tomatilloGreen; 
+  border-radius: 5px;
   font-family: 'Lato', sans-serif;
-  font-weight: 300;
   font-size: large;
   letter-spacing: 1px;
   font-weight: bold;
-  border-radius: 5px;
-  transition: 0.5s;
-  background: #000;
+  text-align: center;
+  background-color: #000; 
   color: #fff;
   cursor: pointer;
-  background-size: 7100% 100%;
-  -webkit-mask: url('https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png') 0 0 no-repeat;
-  mask: url('https://raw.githubusercontent.com/pizza3/asset/master/natureSmaller.png') 0 0 no-repeat;
-  -webkit-animation: ani2 0.7s steps(70) forwards;
-  animation: ani2 0.7s steps(70) forwards;
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  text-decoration: none;
 }
 
 .return-home:hover {
   -webkit-animation: ani 0.7s steps(70) forwards;
   animation: ani 0.7s steps(70) forwards;
-  background-color: #002387;
+  background-color: #4f9534;
   color: white;
 }
-
-/* Keyframes extracted from your Sass */
-@-webkit-keyframes ani {
-  from {
-    -webkit-mask-position: 0 0;
-  }
-  to {
-    -webkit-mask-position: 100% 0;
-  }
-}
-
-@keyframes ani {
-  from {
-    mask-position: 0 0;
-  }
-  to {
-    mask-position: 100% 0;
-  }
-}
-
-@-webkit-keyframes ani2 {
-  from {
-    -webkit-mask-position: 100% 0;
-  }
-  to {
-    -webkit-mask-position: 0 0;
-  }
-}
-
-@keyframes ani2 {
-  from {
-    mask-position: 100% 0;
-  }
-  to {
-    mask-position: 0 0;
-  }
-}
-
-/*.return-home {
-  border-style: solid;
-  border-color: #002387;
-  margin-top: 2em;
-  width: 15em;
-  height: 2em;
-  font-size: large;
-  font-weight: bold;
-  border-radius: 5px;
-
-  &:hover {
-    background-color: #002387;
-    color: white;
-    cursor: pointer;
-  }
-} */
-
