@@ -8,9 +8,15 @@ Everyone's heard about Rotten Tomatoes, but have you heard about Rancid Tomatill
 
 ## Preview
 
-![Home Page View](https://imgur.com/BWCY0sV)
+![Screenshot 2024-03-30 at 4 51 05 PM](https://github.com/Virulencies/Rancid-Tomatillos/assets/136327208/be5d7f6c-536f-4175-b0da-b0381ff64805)
 
-![Detailed Movie Info View](https://imgur.com/pXv2iqX)
+
+![Screenshot 2024-03-30 at 5 08 08 PM](https://github.com/Virulencies/Rancid-Tomatillos/assets/136327208/efb2a31a-5ff2-45d8-b99a-1f2182373881)
+
+
+![Screenshot 2024-03-30 at 4 51 30 PM](https://github.com/Virulencies/Rancid-Tomatillos/assets/136327208/02b11d45-e7df-41ab-9d4e-07247f00935b)
+
+
 
 ## Technologies Used
 <div>
