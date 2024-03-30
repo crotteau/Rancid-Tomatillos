@@ -18,9 +18,4 @@ MovieCard.propTypes = {
     onSelect: PropTypes.func,
 }
 
-
-/*MovieDetails.propTypes = {
-    movie: PropTypes.shape ({
-    title: PropTypes.string, */
-
 export default MovieCard

@@ -11,7 +11,7 @@ function MovieDetails({ onBackClick, movie, loading }) {
 
 
     useEffect(() => {
-        async function fetchVideos() {
+         function fetchVideos() {
             
             fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`)
                 .then(response => {
@@ -21,15 +21,19 @@ function MovieDetails({ onBackClick, movie, loading }) {
                     return response.json();
                 })
                 .then(data => {
-                    const teaserVideo = data.videos.find(video => video.type === 'Teaser');
-                    if (teaserVideo) {
-                        setVideoKey(teaserVideo.key);
+                    const teaser = data.videos.find(video => video.type === 'Teaser');
+                    const trailer = data.videos.find(video => video.type === 'Trailer');
+            
+                    const video = teaser || trailer;
+            
+                    if (video) {
+                      setVideoKey(video.key);
                     }
-                })
-                .catch(error => {
+                  })
+                  .catch(error => {
                     console.error("Error fetching video:", error);
-                });
-        }
+                  });
+              }
     
         if (movieId) {
             fetchVideos();
@@ -77,9 +81,7 @@ function MovieDetails({ onBackClick, movie, loading }) {
                     <p><span>Release Date </span>{formatDate(movie.release_date)}</p>
                     <p><span>Budget </span>{movie.budget === 0 ? 'Unknown Budget' : '$' + movie.budget.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
                     <p><span>Revenue </span>{movie.revenue === 0 ? 'Unknown Box Office' : '$' + movie.revenue.toLocaleString("en-us", { type: "currency", currency: "USD" })}</p>
-                    <NavLink to="/">
-                        <button className="return-home" onClick={onBackClick}>Back to Movies</button>
-                    </NavLink>
+                    <NavLink to="/" className="return-home" onClick={onBackClick}>Back to Movies</NavLink>
                 </section>
             </div>
         </div>
