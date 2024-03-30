@@ -1,20 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
+import { useParams } from 'react-router-dom';
 
-function MovieDetails({ movie, onBackClick, loading }) {
+function MovieDetails({ onBackClick, movie, loading }) {
+    
+    const { movieId } = useParams();
+    const [videoKey, setVideoKey] = useState('');
 
+
+
+    useEffect(() => {
+        async function fetchVideos() {
+            
+            fetch(`https://rancid-tomatillos.herokuapp.com/api/v2/movies/${movieId}/videos`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Video fetch failed');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    const teaserVideo = data.videos.find(video => video.type === 'Teaser');
+                    if (teaserVideo) {
+                        setVideoKey(teaserVideo.key);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error fetching video:", error);
+                });
+        }
+    
+        if (movieId) {
+            fetchVideos();
+        }
+    }, [movieId]);
+    
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', options);
     }
-
-
+    
     if (loading) {
-        return <p>Loading...</p>
+        return <p>Loading...</p>;
     }
-
     return (
         <div className="movie-detail" >
             <h2 className="movie-title">{movie.title}</h2>
@@ -27,7 +57,20 @@ function MovieDetails({ movie, onBackClick, loading }) {
                         <p className="movie-rating">Avg Rating: {movie.average_rating < 4 ? '🤮 ' + movie.average_rating : '🔥 ' + movie.average_rating}</p>
                         <p className="movie-runtime">{movie.runtime + ' minutes'}</p>
                     </article>
+                    {videoKey && (
+                <div className="video-container">
+                    <iframe
+                        width="600"
+                        height="500"
+                        src={`https://www.youtube.com/embed/${videoKey}`}
+                        title="YouTube video player"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                    ></iframe>
+                </div>
+            )}
                 </section>
+                
                 <section className="movie-detail-right">
                     <p className="movie-overview"> <span>Overview </span>{movie.overview}</p>
                     <p><span>Release Date </span>{formatDate(movie.release_date)}</p>
