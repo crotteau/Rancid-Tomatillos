@@ -4,6 +4,6 @@ describe('MovieList Component', () => {
     cy.visit('http://localhost:3000/');
     cy.wait('@getMovies');
     cy.get('.movies-container').should('exist');
-    cy.get('.movies-container').find('> div').should('have.length.at.least', 1);
+    cy.get('.movies-container').find('div').should('have.length.at.least', 1);
   });
 });

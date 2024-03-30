@@ -64,7 +64,7 @@ function MovieList({ movies, selectMovie, randomMovie, formatDate }) {
     return (
         <div className='movies-container'>
             <section className="headliner" style={{ backgroundImage: `url(${randomMovie.backdrop_path})` }}>
-            {headlinerMovie}
+                {headlinerMovie}
             </section>
             <h3 className='container-header'>All Movies</h3>
             <section className='all-movies'>
@@ -88,8 +88,6 @@ MovieList.propTypes = {
         release_date: PropTypes.string
     }).isRequired,
     selectMovie: PropTypes.func.isRequired,
-    trackRef: PropTypes.object,
-
 }
 
 export default MovieList;

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { NavLink } from 'react-router-dom'
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom'
 
 function MovieDetails({ onBackClick, movie, loading }) {
-    
+
     const { movieId } = useParams();
     const [videoKey, setVideoKey] = useState('');
 
@@ -39,13 +39,13 @@ function MovieDetails({ onBackClick, movie, loading }) {
             fetchVideos();
         }
     }, [movieId]);
-    
+
     function formatDate(dateString) {
         const options = { year: 'numeric', month: 'short', day: 'numeric' };
         const date = new Date(dateString);
         return date.toLocaleDateString('en-US', options);
     }
-    
+
     if (loading) {
         return <p>Loading...</p>;
 
@@ -63,19 +63,19 @@ function MovieDetails({ onBackClick, movie, loading }) {
                         <p className="movie-runtime">{movie.runtime + ' minutes'}</p>
                     </article>
                     {videoKey && (
-                <div className="video-container">
-                    <iframe
-                        width="600"
-                        height="500"
-                        src={`https://www.youtube.com/embed/${videoKey}`}
-                        title="YouTube video player"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
-                </div>
-            )}
+                        <div className="video-container">
+                            <iframe
+                                width="600"
+                                height="500"
+                                src={`https://www.youtube.com/embed/${videoKey}`}
+                                title="YouTube video player"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen
+                            ></iframe>
+                        </div>
+                    )}
                 </section>
-                
+
                 <section className="movie-detail-right">
                     <p className="movie-overview"> <span>Overview </span>{movie.overview}</p>
                     <p><span>Release Date </span>{formatDate(movie.release_date)}</p>

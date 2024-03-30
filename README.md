@@ -12,10 +12,10 @@ Everyone's heard about Rotten Tomatoes, but have you heard about Rancid Tomatill
 <div>
   <img src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' alt='javascript'/>
   <img src='https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white' alt='html'/>
-  <img src='https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white' alt='sass' /> 
   <img src='https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB' alt='react'/>
   <img src='https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white' alt='react-router'/>
   <img src='https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white' alt='cypress'/>
+  <img src='https://img.shields.io/badge/Lighthouse-F44B21?style=for-the-badge&logo=Lighthouse&logoColor=white' alt='lighthouse'/>
 </div>
 
 ## Installation Instructions
@@ -34,6 +34,6 @@ The goals of this project were to:
 This app was created by two developers who are 4 months into a Front End coding program. We spent approximately 30 hours creating this project and was our first introduction to using React. 
 
 ## Future Directions and Additions
-- Enhance accessiblity across the app
 - Add search feature for movie title or genres
 - Improve app responsiveness to varying screen sizes
+- Write more robust Cypress tests
