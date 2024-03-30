@@ -16,9 +16,11 @@ function Headliner({ title, rating, release, onSelect, formatDate }) {
 }
 
 Headliner.propTypes = {
-    backdrop: PropTypes.string,
-    title: PropTypes.string,
-    onSelect: PropTypes.func,
+    title: PropTypes.string.isRequired,
+    rating: PropTypes.string.isRequired,
+    release: PropTypes.string.isRequired,
+    onSelect: PropTypes.func.isRequired,
+    formatDate: PropTypes.func.isRequired
 }
 
 export default Headliner

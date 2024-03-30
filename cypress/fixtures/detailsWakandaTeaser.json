@@ -1,0 +1,32 @@
+{
+    "videos": [
+        {
+            "id": 38,
+            "movie_id": 505642,
+            "key": "2o4dJ3YhPoU",
+            "site": "YouTube",
+            "type": "Featurette"
+        },
+        {
+            "id": 40,
+            "movie_id": 505642,
+            "key": "o4AQ-q8AeKo",
+            "site": "YouTube",
+            "type": "Teaser"
+        },
+        {
+            "id": 41,
+            "movie_id": 505642,
+            "key": "8OnkjT3SZV8",
+            "site": "YouTube",
+            "type": "Teaser"
+        },
+        {
+            "id": 42,
+            "movie_id": 505642,
+            "key": "IH4Z3tgPjF8",
+            "site": "YouTube",
+            "type": "Teaser"
+        }
+    ]
+}
