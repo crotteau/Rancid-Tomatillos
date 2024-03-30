@@ -1,7 +1,7 @@
 import './App.css';
 import tomatillo from './assets/tomatillo.png'
 import movieData from './Data/movieData.js'
-import MovieList from './MovieList.js';
+import MovieList from './MovieList.js'
 import MovieDetails from './MovieDetails.js'
 import React, { useEffect, useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
