@@ -28,6 +28,9 @@ Everyone's heard about Rotten Tomatoes, but have you heard about Rancid Tomatill
   <img src='https://img.shields.io/badge/Lighthouse-F44B21?style=for-the-badge&logo=Lighthouse&logoColor=white' alt='lighthouse'/>
 </div>
 
+## Deployed App
+Visit [Rancid Tomatillos](https://rancid-tomatillos-78uopmwve-megans-projects-7132b52c.vercel.app/) to view the project!
+
 ## Installation Instructions
 - `clone` this [repository](https://github.com/Virulencies/Rancid-Tomatillos) to your machine
 - `cd` into project directory
