@@ -44,7 +44,7 @@ The goals of this project were to:
 - Test React components & asynchronous JS
 - Create a multi-page UX using Router
 
-This app was created by two developers who are 4 months into a Front End coding program. We spent approximately 30 hours creating this project and it was our first introduction to using React. 
+This app was created by two developers who are 4 months into a Front End coding program. We each spent approximately 20 hours creating this project and it was our first introduction to using React. 
 
 ## Future Directions and Additions
 - Add search feature for movie title or genres
